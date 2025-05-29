@@ -10,6 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import prisma from "@/lib/prisma";
 import Link from "next/link";
+import Navbar from "./Component/Navbar";
 
 export default async function Home() {
   const poster = await prisma.poster.findMany({});
@@ -17,6 +18,7 @@ export default async function Home() {
 
   return (
     <>
+      <Navbar />
       <Header />
       <div className="container mx-auto px-4 py-6">
         {/* Header Section */}

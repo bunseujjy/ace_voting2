@@ -53,22 +53,17 @@ const Poster = ({ posterId }) => {
       <div className="mt-10">
         <div className="w-full h-full">
           <h1 className="font-bold text-2xl">
-            Children's Day Poster Exhibition Voting
+            Children's Day Poster Exhibition Voting (ACE Siem Reap)
           </h1>
-
-          {/* Description */}
-          <div className="px-4 py-5 rounded-lg border border-slate-400 mt-5">
-            <h1 className="text-xl font-bold">
-              អ្នកអាចបោះឆ្នោតបានតាមរយះការ​ Vote ខាងក្រោម
-            </h1>
-          </div>
 
           {/* Voting options */}
           <div className="px-4 py-5 rounded-lg border border-slate-400 mt-5">
             <h1 className="text-xl font-bold mb-4">
               បោះឆ្នោតឲ្យស្នាដៃសិស្សក្រុមទី {posterId}
             </h1>
-            <h1 className="text-xl font-bold mb-4">Voting for Group</h1>
+            <h1 className="text-xl font-bold mb-4">
+              Voting for Group {posterId}
+            </h1>
             <div className="flex flex-col items-start space-y-2">
               <div className="flex items-center">
                 <input
