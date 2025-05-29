@@ -3,6 +3,7 @@ import React from "react";
 import Dashboard from "./Dashboard";
 import { auth } from "@/auth";
 import Navbar from "@/app/Component/Navbar";
+export const dynamic = "force-dynamic";
 
 const DashboardPage = async () => {
   const voting = await prisma.votingTally.findMany();
