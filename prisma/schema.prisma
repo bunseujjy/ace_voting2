@@ -1,0 +1,51 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Poster {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String
+  posterId  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Voting {
+  id        String     @id @default(auto()) @map("_id") @db.ObjectId
+  posterId  String
+  choice    VoteChoice
+  deviceId  String // New field to track device
+  createdAt DateTime   @default(now())
+}
+
+model VotingTally {
+  id       String     @id @default(auto()) @map("_id") @db.ObjectId
+  posterId String
+  choice   VoteChoice
+  number   Int        @default(0)
+}
+
+enum VoteChoice {
+  Yes
+  No
+}
+
+model User {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String?
+  email     String   @unique
+  password  String // hashed
+  createdAt DateTime @default(now())
+}
