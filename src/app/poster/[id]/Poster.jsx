@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import React, { useState } from "react";
 import { Button } from "../../../../@/components/ui/button";
 import { toast } from "sonner";
@@ -43,10 +42,8 @@ const Poster = ({ posterId }) => {
 
   return (
     <div className="max-w-screen-xl mx-auto px-4 md:px-2 lg:px-0">
-      <Image
-        src="/banner.jpg"
-        width={1000}
-        height={1000}
+      <img
+        src="/banner.jfif"
         alt="Voting banner"
         className="w-full h-full object-cover bg-center"
       />
@@ -59,10 +56,10 @@ const Poster = ({ posterId }) => {
           {/* Voting options */}
           <div className="px-4 py-5 rounded-lg border border-slate-400 mt-5">
             <h1 className="text-xl font-bold mb-4">
-              បោះឆ្នោតឲ្យស្នាដៃសិស្សក្រុមទី {posterId}
+              ខ្ញុំចូលចិត្តស្នាដៃរបស់សិស្សក្រុមទី {posterId}
             </h1>
             <h1 className="text-xl font-bold mb-4">
-              Voting for Group {posterId}
+              I like the poster of group {posterId}
             </h1>
             <div className="flex flex-col items-start space-y-2">
               <div className="flex items-center">
@@ -76,19 +73,6 @@ const Poster = ({ posterId }) => {
                 />
                 <label htmlFor="Yes" className="pl-2">
                   Yes
-                </label>
-              </div>
-              <div className="flex items-center">
-                <input
-                  type="radio"
-                  id="No"
-                  name="vote"
-                  value="No"
-                  checked={choice === "No"}
-                  onChange={(e) => setChoice(e.target.value)}
-                />
-                <label htmlFor="No" className="pl-2">
-                  No
                 </label>
               </div>
             </div>
