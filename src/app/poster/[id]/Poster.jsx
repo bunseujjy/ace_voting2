@@ -53,7 +53,7 @@ const Poster = ({ posterId }) => {
       <div className="mt-10">
         <div className="w-full h-full">
           <h1 className="font-bold text-2xl">
-            Children's Day Poster Exhibition Voting (ACE Siem Reap)
+            Children's Day Poster Exhibition (ACE Siem Reap)
           </h1>
 
           {/* Voting options */}
