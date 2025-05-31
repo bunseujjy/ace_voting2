@@ -57,10 +57,9 @@ export default function Dashboard({ voting, posters, userId }) {
 
   // Process voting data to create poster data with vote counts
   const posterData = useMemo(() => {
-    // Create a map to store vote counts and info for each poster
     const posterMap = new Map();
 
-    // Initialize with actual posters from database
+    // Initialize with posters from database
     posters.forEach((poster) => {
       posterMap.set(poster.posterId, {
         id: poster.posterId,
@@ -70,14 +69,13 @@ export default function Dashboard({ voting, posters, userId }) {
         noVotes: 0,
         status: poster.status || "active",
         firstVoteDate: poster.createdAt,
-        dbId: poster.id, // Store the database ID for deletion
+        dbId: poster.id,
       });
     });
 
-    // Process each vote to build poster data
+    // Process each vote
     voting.forEach((vote) => {
       if (!posterMap.has(vote.posterId)) {
-        // Initialize poster data if not found in posters table
         posterMap.set(vote.posterId, {
           id: vote.posterId,
           title: `Poster ${vote.posterId}`,
@@ -92,14 +90,14 @@ export default function Dashboard({ voting, posters, userId }) {
 
       const poster = posterMap.get(vote.posterId);
 
-      // Count votes
+      // Count votes using the 'number' field
       if (vote.choice === "Yes") {
-        poster.yesVotes++;
+        poster.yesVotes += vote.number || 1; // Use vote.number if exists, default to 1
       } else if (vote.choice === "No") {
-        poster.noVotes++;
+        poster.noVotes += vote.number || 1;
       }
 
-      // Keep track of the earliest vote date as poster creation date
+      // Track earliest vote date
       if (vote.createdAt < poster.firstVoteDate) {
         poster.firstVoteDate = vote.createdAt;
         poster.createdDate = vote.createdAt;
